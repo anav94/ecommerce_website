@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+    <link rel="stylesheet" href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'>
+    <link rel="stylesheet" href="homepage.css">
+</head>
+<body>
+
+<section id="header">
+    <a href="#"><img src="galaxylogo.gif" class="logo" alt=""></a>
+    <div>
+        <ul id="navbar">
+            <li><a href="homepage.html">Home</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="checkout.html" id="cart-button"><i class='bx bxs-cart'></i></a></li>
+        </ul>
+    </div>
+    <span id="welcomeMessage"></span> <!-- Username will be inserted here -->
+</section>
+
+<section id="products">
+    <div class="product">
+        <img src="macbookpro.jpeg" alt="Product 1">
+        <h3>Macbook Pro 13in (M2,2022)</h3>
+        <p>₹110999</p>
+        <i class='bx bxs-star'></i> <i class='bx bxs-star'></i> <i class='bx bxs-star'></i> <i class='bx bxs-star'> </i> <br> <br>
+        <button class="btn" onclick="addToCart('Macbook Pro 13in (M2,2022)', 110999)">Add to Cart</button>
+    </div>
+    <div class="product">
+        <img src="iphone15pro.webp" alt="Product 2">
+        <h3>iPhone 15 pro 256GB Natural Titanium</h3>
+        <p>₹137990</p>
+        <i class='bx bxs-star'></i> <i class='bx bxs-star'></i> <i class='bx bxs-star'></i> <i class='bx bxs-star'></i><i class='bx bxs-star-half'></i> <br> <br>
+        <button class="btn" onclick="addToCart('iPhone 15 pro 256GB Natural Titanium', 137990)">Add to Cart</button>
+    </div>
+    <div class="product">
+        <img src="applewatchse.jpeg" alt="Product 3">
+        <h3>Apple Watch SE (GPS + Cellular, 40mm)</h3>
+        <p>₹29900</p>
+        <i class='bx bxs-star'></i> <i class='bx bxs-star'></i> <i class='bx bxs-star'></i> <i class='bx bxs-star-half'></i> <br> <br>
+        <button class="btn" onclick="addToCart('Apple Watch SE (GPS + Cellular, 40mm)', 29900)">Add to Cart</button>
+    </div>
+</section>
+
+<section id="footer">
+    <div>
+        <ul id="footer-links">
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+        </ul>
+    </div>
+</section>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    // Retrieve username from local storage
+    var username = localStorage.getItem("username");
+    if (username) {
+        // Update welcome message with username
+        document.getElementById("welcomeMessage").textContent =  username;
+    }
+});
+function addToCart(productName, productPrice) {
+    // Retrieve existing cart items from local storage, or initialize an empty array
+    let cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+    
+    // Retrieve username from local storage
+    let username = localStorage.getItem("username");
+
+    // Add the selected product to the cart along with the username
+    cartItems.push({ name: productName, price: productPrice, username: username });
+
+    // Store the updated cart items in local storage
+    localStorage.setItem('cart', JSON.stringify(cartItems));
+
+    // Redirect to the cart page
+    window.location.href = "checkout.html";
+}
+
+</script>
+
+</body>
+</html>

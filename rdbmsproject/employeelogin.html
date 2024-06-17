@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Login</title>
+    <link rel="stylesheet" type="text/css" href="login.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'> 
+</head>
+<body>
+
+    <div class="spinner">
+        <img src="galaxylogo.gif" alt="Loading..." />
+    </div>
+
+
+    <div class="wrapper">
+
+       <form action="employeelogin.php" id="employeeLoginForm" method="POST">
+    <h1>Employee Login</h1>
+
+    <div class="input-box">
+        <input type="text" placeholder="Employee ID" required id="empID" name="empID">
+        <i class='bx bx-user'></i>
+    </div>
+
+    <div class="input-box">
+        <input type="password" placeholder="Password" required id="empPassword" name="empPassword">
+        <i class='bx bxs-lock-alt'></i>
+    </div>
+
+    <button type="submit" class="btn">Login</button>
+</form>
+
+
+  
+
+</body>
+
+<script>
+    document.getElementById("employeeLoginForm").addEventListener("submit", function(event) {
+        // Prevent the default form submission behavior
+        event.preventDefault();
+        
+        // Save employee ID in local storage
+        var empID = document.getElementById("empID").value;
+        localStorage.setItem("empID", empID);
+    
+        // Submit the form
+        this.submit();
+    });
+</script>
+
+
+</html>

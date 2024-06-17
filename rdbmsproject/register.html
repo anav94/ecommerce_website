@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Register</title>
+<link rel="stylesheet" type="text/css" href="register.css">
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'> 
+</head>
+<body>
+<div class="wrapper">
+    <form id="registrationForm" method="post" action="register.php"> <!-- Change action to register.php -->
+        <h1>Register</h1>
+        <div class="input-box">
+            <input type="text" id="username" name="username" placeholder="Username" required>
+        </div>
+        <div class="input-box">
+            <input type="email" id="email" name="email" placeholder="Email" required>
+        </div>
+        <div class="input-box">
+            <input type="password" id="password" name="password" placeholder="Password" required>
+        </div>
+        <button type="submit" class="btn">Register</button>
+    </form>
+</div>
+
+<script>
+    document.getElementById("registrationForm").addEventListener("submit", function(event) {
+        // event.preventDefault(); // Remove this line
+        // Perform form validation
+        var username = document.getElementById("username").value;
+        var email = document.getElementById("email").value;
+        var password = document.getElementById("password").value;
+
+        if (!username || !email || !password) {
+            alert("Please fill out all fields.");
+            event.preventDefault(); // Prevent form submission
+        }
+    });
+</script>
